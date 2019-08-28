@@ -11,4 +11,7 @@
 |
 */
 
-Route::get('/', 'EmailsController@index');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'EmailsController@index')->name('home');

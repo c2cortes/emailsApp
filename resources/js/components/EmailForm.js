@@ -8,7 +8,6 @@ export default class EmailForm extends Component {
     constructor(props){
         super(props);
         this.state = {
-            baseUrl: 'http://localhost:8888/emailsApp/public/',
             subject: '',
             validationErrorMessage: '',
             editorState: EditorState.createEmpty()
@@ -48,17 +47,13 @@ export default class EmailForm extends Component {
         let contentState    = this.state.editorState.getCurrentContent(),
             subject         = this.state.subject,
             content         = contentState && convertToRaw(contentState).blocks[0].text,
-            url             = this.state.baseUrl + 'emails/save/' + subject + '/' + content;
+            url             = '../emails/save/' + subject + '/' + content;
             
           axios.get(url)
             .then(response => {
-                console.log(response);
-                
-                /*if(response.data.response == 'error'){
-                    this.showMessage(response.data.message);
-                } else {
-                    this.props.activeCoursesComponent(response.data.token);
-                }*/
+                if(response.statusText === 'OK') {
+                    window.location.href = '../emails';
+                }
             })
             .catch(error => {
                 alert(error);
@@ -83,9 +78,6 @@ export default class EmailForm extends Component {
         } else {
             this.sendData();
         }
-
-        //this.setState({ convertedContent: convertToRaw(this.state.editorState.getCurrentContent()) }, () => console.log('this.state => ', this.state.convertedContent) );
-        
 
         this.setState({ showAlert, alertMessage });
     }

@@ -103533,7 +103533,6 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(EmailForm).call(this, props));
     _this.state = {
-      baseUrl: 'http://localhost:8888/emailsApp/public/',
       subject: '',
       validationErrorMessage: '',
       editorState: draft_js__WEBPACK_IMPORTED_MODULE_3__["EditorState"].createEmpty()
@@ -103589,14 +103588,11 @@ function (_Component) {
       var contentState = this.state.editorState.getCurrentContent(),
           subject = this.state.subject,
           content = contentState && Object(draft_js__WEBPACK_IMPORTED_MODULE_3__["convertToRaw"])(contentState).blocks[0].text,
-          url = this.state.baseUrl + 'emails/save/' + subject + '/' + content;
+          url = '../emails/save/' + subject + '/' + content;
       axios.get(url).then(function (response) {
-        console.log(response);
-        /*if(response.data.response == 'error'){
-            this.showMessage(response.data.message);
-        } else {
-            this.props.activeCoursesComponent(response.data.token);
-        }*/
+        if (response.statusText === 'OK') {
+          window.location.href = '../emails';
+        }
       })["catch"](function (error) {
         alert(error);
       });
@@ -103619,8 +103615,7 @@ function (_Component) {
         alertMessage = 'Insert a content for the email';
       } else {
         this.sendData();
-      } //this.setState({ convertedContent: convertToRaw(this.state.editorState.getCurrentContent()) }, () => console.log('this.state => ', this.state.convertedContent) );
-
+      }
 
       this.setState({
         showAlert: showAlert,

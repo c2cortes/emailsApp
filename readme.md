@@ -13,6 +13,10 @@ This is an emails editor built with Laravel and React JS
 - In the terminal run `npm install` to install the React dependencies.
 - Run `npm run dev` to set up React modules (Email form).
 
+## How to run the project on a browser
+- Go to the browser and type the path of your localhost and the project name + `/public`.
+- Example: `http://localhost:8888/emailsApp/public/`
+
 ## Git structure
 
 - `master` is the main branch (prod).

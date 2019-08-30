@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Email App</title>
 <link href="{{ URL::asset('css/bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ URL::asset('css/custom.css') }}" rel="stylesheet">
 </head>
 
 <body>

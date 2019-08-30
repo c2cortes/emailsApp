@@ -18,4 +18,13 @@ class EmailsController extends Controller
     public function index(){
         return view('emails.index');
     }
+
+    public function save($subject, $content) {
+        $email = new \App\Email;
+        $email->user_id = 1;
+        $email->subject = $subject;
+        $email->content = $content;
+        $email->save();
+        die();
+    }
 }

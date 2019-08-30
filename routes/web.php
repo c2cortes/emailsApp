@@ -15,3 +15,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'EmailsController@index')->name('home');
+Route::get('/emails', 'EmailsController@index')->name('home');
+Route::get('/emails/save/{subject}/{content}', 'EmailsController@save')->name('home');
+Route::view('/emails/new', 'emails.new');
